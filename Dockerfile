@@ -21,3 +21,4 @@ EXPOSE 8787
 
 ENTRYPOINT ["headroom", "proxy"]
 CMD ["--host", "0.0.0.0", "--port", "8787"]
+
