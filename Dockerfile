@@ -4,7 +4,7 @@ FROM python:3.13-slim
 # HEADROOM_REQUIRE_RUST_CORE=false = mode degraded sense Rust
 ENV HEADROOM_REQUIRE_RUST_CORE=false
 
-RUN pip install --no-cache-dir "headroom-ai==0.20.15" uvicorn httpx "openai>=2.14.0" websockets fastapi && \
+RUN pip install --no-cache-dir "headroom-ai==0.20.15" "httpx[http2]" uvicorn "openai>=2.14.0" websockets fastapi && \
     python3 -c "import headroom; print(f'Headroom {headroom.__version__} OK')"
 
 EXPOSE 8787
