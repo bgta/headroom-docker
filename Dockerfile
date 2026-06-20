@@ -1,8 +1,11 @@
 FROM python:3.13-slim
 
-# 0.20.15 = Última versió pure Python (abans del Rust nadiu)
+# Pure Python headroom-ai (0.20.15 = abans del Rust nadiu)
+# HEADROOM_REQUIRE_RUST_CORE=false = mode degraded sense Rust
+ENV HEADROOM_REQUIRE_RUST_CORE=false
+
 RUN pip install --no-cache-dir "headroom-ai==0.20.15" uvicorn httpx "openai>=2.14.0" websockets fastapi && \
-    python3 -c "import headroom; print(f'Headroom {headroom.__version__} pure Python OK')"
+    python3 -c "import headroom; print(f'Headroom {headroom.__version__} OK')"
 
 EXPOSE 8787
 ENTRYPOINT ["headroom", "proxy"]
